@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function App() {
 
-  const [page,setPage] = useState("connection"); // cette etat est utilisé pour faire un vas et vient entre les pages
+  const [page,setPage] = useState("home"); // cette etat est utilisé pour faire un vas et vient entre les pages
   return (
     <div className="App">
       {page === 'accueil' ? <Accueil setPage={setPage}/> : page === 'connection' ? <Connection setPage={setPage} /> : <Home setPage={setPage} />}
