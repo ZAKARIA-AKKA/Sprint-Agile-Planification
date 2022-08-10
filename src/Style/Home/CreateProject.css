@@ -1,0 +1,41 @@
+.createProject
+{
+    width:100%;
+    height:100%;
+    border-radius:30px 0 0 30px;
+}
+.createProject .title
+{
+    /* background:pink; */
+    color:#463F57;
+    width:100%;
+    height:50%;
+    position:relative;
+}
+.createProject .title h1
+{
+    /* background:rgb(161, 4, 31); */
+    font-size:10em;
+    letter-spacing:10px;
+    position: absolute;
+    top:70px;
+    left:50px;
+}
+.createProject .title h4
+{
+    /* background:rgb(161, 4, 31); */
+    font-size:2em;
+    letter-spacing:10px;
+    position: absolute;
+    top:70px;
+    right:400px;
+}
+
+.createProject .content
+{
+    /* background:rgb(77, 201, 233); */
+    color:#463F57;
+    width:100%;
+    height:50%;
+    position:relative;
+}

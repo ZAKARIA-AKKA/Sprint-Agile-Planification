@@ -34,7 +34,7 @@
     align-items:center;
 }
 
-h1
+.signin_cnx h1
 {
     /* background:rgb(131, 42, 42); */
     width:100%;
@@ -42,6 +42,7 @@ h1
     text-align: center;
     font-size:3em;
     color:#887455;
+    margin-top:20px;
 }
 .signIn_form
 {
@@ -50,7 +51,7 @@ h1
     flex-direction: column;
     width:90%;
     height:70%;
-    margin:20px 0 0 20px;
+    margin:60px 0 0 20px;
 }
 .signIn_form input[type="text"],input[type="password"]
 {
@@ -79,7 +80,7 @@ h1
     display: flex;
     justify-content: flex-end;
     margin-left:390px;
-    
+    margin-top:15px;
 }
 .signIn_form button
 {
@@ -95,14 +96,14 @@ h1
     margin-top:30px;
     cursor: pointer;
     position:relative;
-    top:25px;
+    top:55px;
     left:280px;
 }
 
 .boxOfEyes
 {
     position:absolute;
-    top:343px;
+    top:325px;
     left:560px;
 }
 .eye
@@ -121,7 +122,7 @@ h1
     text-align: center;
     visibility: hidden;
     position:relative;
-    top:20px;
+    top:55px;
 }
 
 .signin_decoration

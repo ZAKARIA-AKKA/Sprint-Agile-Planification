@@ -2,12 +2,15 @@
 import '../../Style/Home/Home.css';
 import Menu from '../Children/Menu';
 import { useState } from "react";
+import ListProject from '../Children/Responsable/ListProject';
+import CreateProject from '../Children/Responsable/CreateProject';
+import StateProject from '../Children/Responsable/StateProject';
 
 
 const Home = (props) => 
 {
     const [operation,setOperation] = useState("list_p"); // pour passer d'une operation a l'autre list/creation/consultation.. de projet
-
+    
     return (
         <div className='home'>
             <section className='navigation_section'> <Menu setPage={props.setPage} setOperation={setOperation}/> </section>
@@ -32,7 +35,9 @@ const Home = (props) =>
                         <i className="fa-solid fa-bell"></i>
                     </div>
                 </header>
-                <section className='change_section'></section>
+                <section className='change_section'> 
+                    {operation === 'list_p' ? <ListProject/> : operation === 'create_p' ? <CreateProject/> : operation === 'consult_p' ? <StateProject/> : null} 
+                </section>
                 <footer></footer>
             </section>
         </div>

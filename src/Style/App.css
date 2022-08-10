@@ -4,3 +4,8 @@
     height:100vh;
     background:#57606f;
 }
+p,h1,h2,h4
+{
+    margin:0;
+    padding:0;
+}

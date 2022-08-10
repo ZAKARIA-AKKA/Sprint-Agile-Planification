@@ -1,0 +1,120 @@
+.listProject
+{
+    width:100%;
+    height:100%;
+    border-radius:30px 0 0 30px;
+    display: flex;
+    justify-content:space-around;
+    overflow-y:auto;
+    flex-wrap: wrap;
+    /* position:relative; */
+}
+.listProject .title
+{
+    /* background:pink; */
+    color:#463F57;
+    width:100%;
+    height:50%;
+    position:relative;
+}
+.listProject .title h1
+{
+    /* background:rgb(161, 4, 31); */
+    font-size:10em;
+    letter-spacing:10px;
+    position: absolute;
+    top:70px;
+    left:50px;
+}
+.listProject .title h4
+{
+    /* background:rgb(161, 4, 31); */
+    font-size:2em;
+    letter-spacing:10px;
+    position: absolute;
+    top:70px;
+    left:753px;
+}
+
+.test
+{
+    width:300px;
+    height:150px;
+    border-radius:20px;
+    background:grey;
+    margin:10px;
+    padding:10px;
+    opacity:0.8;
+    cursor: pointer;
+}
+.info_project
+{
+    position:fixed;
+    right:0;
+    width:80%;
+    height:80%;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    opacity:.8;
+    border-radius:50px 0 0 50px;
+}
+.info_project header
+{
+    width:100%;
+    height:20%;
+    /* background:pink; */
+    display:flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+.info_project header img
+{
+    width:25px;
+    height:25px;
+    margin-right:50px;
+    cursor: pointer;
+}
+.info_project section
+{
+    width:80%;
+    height:60%;
+    color:white;
+    /* background:rgb(14, 169, 61); */
+    padding-left:100px;
+}
+.info_project section h1
+{
+    font-size: 3em;
+    color:white;
+    margin-bottom:50px;
+}
+.info_project section p
+{
+    margin-bottom:20px;
+    margin-left:-50px;
+}
+.info_project footer
+{
+    width:100%;
+    height:20%;
+    /* background:pink; */
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    color:white;
+}
+/*==========================================================*/
+::-webkit-scrollbar
+{
+    width:.8em;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background:#463F57;
+    border-radius:10px;
+}
+
+
