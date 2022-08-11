@@ -36,7 +36,9 @@ const Home = (props) =>
                     </div>
                 </header>
                 <section className='change_section'> 
-                    {operation === 'list_p' ? <ListProject/> : operation === 'create_p' ? <CreateProject/> : operation === 'consult_p' ? <StateProject/> : null} 
+                    {operation === 'list_p' ? <ListProject/> : operation === 'create_p' 
+                                            ? <CreateProject/> : operation === 'consult_p' 
+                                            ? <StateProject/> : null} 
                 </section>
                 <footer></footer>
             </section>

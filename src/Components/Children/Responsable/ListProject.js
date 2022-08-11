@@ -2,13 +2,13 @@
 import '../../../Style/Home/ListProject.css';
 import close from '../../../Asset/Static-Img/cross-mark.png'
 import { useState } from "react";
+import Project from './Project';
 
 
 const ListProject = (props) => 
 {
     
     const [bullInfo,setInfo] = useState(false);
-    const projects = [1,2,3,4,5,6]
 
     return (
         <div className='listProject'>
@@ -16,7 +16,7 @@ const ListProject = (props) =>
                 <h1>PROJECT</h1>
                 <h4>LIST</h4>
             </div>
-            {projects.map((index) => <div key={index} className='test' onClick={() => setInfo(true)}>project</div>)}
+            <Project setInfo={setInfo}/>
             { bullInfo && 
             <section className='info_project'>
                 <header><img src={close} alt="Close icon" onClick={() => setInfo(false)}></img></header>
@@ -27,8 +27,7 @@ const ListProject = (props) =>
                         Project - 1 est une itération de développement de la méthode Scrum. Il dure généralement entre deux et quatre semaines.
                         Il dure généralement entre deux et quatre semaines.
                     </p>
-                    <p>Réaliser par : AKKA ZAKARIA <br/>Réf : 325417548
-</p>
+                    <p>Réaliser par : AKKA ZAKARIA <br/>Réf : 325417548</p>
                 </section>
                 <footer>
                     <div className='etat'>Etat : Complete</div>

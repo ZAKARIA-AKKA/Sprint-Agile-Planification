@@ -29,10 +29,10 @@
 {
     /* background:rgb(161, 4, 31); */
     font-size:2em;
-    letter-spacing:5px;
+    /* letter-spacing:5px; */
     position: absolute;
     top:70px;
-    left:730px;
+    left:753px;
 }
 
 .test

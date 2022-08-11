@@ -7,6 +7,7 @@
     justify-content:space-around;
     overflow-y:auto;
     flex-wrap: wrap;
+    /* background: pink; */
     /* position:relative; */
 }
 .listProject .title
@@ -36,17 +37,6 @@
     left:753px;
 }
 
-.test
-{
-    width:300px;
-    height:150px;
-    border-radius:20px;
-    background:grey;
-    margin:10px;
-    padding:10px;
-    opacity:0.8;
-    cursor: pointer;
-}
 .info_project
 {
     position:fixed;
@@ -58,6 +48,7 @@
     background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity:.8;
     border-radius:50px 0 0 50px;
+    z-index: 2;
 }
 .info_project header
 {
@@ -93,6 +84,7 @@
 {
     margin-bottom:20px;
     margin-left:-50px;
+    line-height:1.5;
 }
 .info_project footer
 {
