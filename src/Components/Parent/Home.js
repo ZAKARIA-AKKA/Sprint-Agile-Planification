@@ -5,6 +5,7 @@ import { useState } from "react";
 import ListProject from '../Children/Responsable/ListProject';
 import CreateProject from '../Children/Responsable/CreateProject';
 import StateProject from '../Children/Responsable/StateProject';
+import CreateSprint from '../Children/Responsable/CreateSprint';
 
 
 const Home = (props) => 
@@ -36,8 +37,9 @@ const Home = (props) =>
                     </div>
                 </header>
                 <section className='change_section'> 
-                    {operation === 'list_p' ? <ListProject/> : operation === 'create_p' 
-                                            ? <CreateProject/> : operation === 'consult_p' 
+                    {operation === 'list_p' ? <ListProject/> : operation === 'create_p'
+                                            ? <CreateProject/> : operation === 'sprint_p' 
+                                            ? <CreateSprint/> : operation === 'consult_p'
                                             ? <StateProject/> : null} 
                 </section>
                 <footer></footer>

@@ -7,8 +7,7 @@ import MenuButton from './MenuButton';
 
 const Menu = (props) => 
 { 
-    const icons = ["house","compass-drafting","chart-pie","sliders","user"];
-   
+    const icons = [{name : "house", title : "Liste"},{name : "compass-drafting", title : "Create Projet"},{name : "boxes-stacked", title : "Create Sprint"},{name : "chart-pie", title : "Chart Projet"},{name : "user", title : "Profil"}];
     return (
         <nav className='menu'>
             <header className='logo'> <img src={logo} alt='logo' /> </header>
@@ -16,7 +15,7 @@ const Menu = (props) =>
                 {icons.map((item,index) => <MenuButton key={index} icon={item} cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation}/>)}
             </div>
             <footer className='logout'>
-                <MenuButton icon="arrow-right-to-bracket" cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation}/>
+                <MenuButton icon={{name : "arrow-right-to-bracket", title : "LogOut"}} cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation}/>
             </footer>
         </nav>
     )

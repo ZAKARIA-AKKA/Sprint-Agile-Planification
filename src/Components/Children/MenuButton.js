@@ -9,8 +9,8 @@ const MenuButton = (props) => {
     function handelClick()
     {
         let walls = document.querySelectorAll('.wall');
-        if(props.icon !== 'arrow-right-to-bracket') { walls.forEach(elm => { elm.setAttribute('style','display:none') }); }
-        switch(props.icon)
+        if(props.icon.name !== 'arrow-right-to-bracket') { walls.forEach(elm => { elm.setAttribute('style','display:none') }); }
+        switch(props.icon.name)
         {
             case 'house':
                 props.setOperation("list_p");
@@ -20,12 +20,12 @@ const MenuButton = (props) => {
                 props.setOperation("create_p");
                 walls[1].setAttribute('style','display:block')  
             break;
-            case 'chart-pie':
-                props.setOperation("consult_p");
+            case 'boxes-stacked':
+                props.setOperation("sprint_p");
                 walls[2].setAttribute('style','display:block') 
             break;
-            case 'sliders':
-                props.setOperation("setting");
+            case 'chart-pie':
+                props.setOperation("consult_p");
                 walls[3].setAttribute('style','display:block') 
             break;
             case 'user':
@@ -46,7 +46,7 @@ const MenuButton = (props) => {
     return (
         <div className='icon_div'>
             <div className='wall'></div>
-            <i className={"fa-solid fa-" + props.icon} onClick={handelClick}></i>
+            <abbr title={props.icon.title}><i className={"fa-solid fa-" + props.icon.name} onClick={handelClick}></i></abbr>
         </div> 
     );
 }

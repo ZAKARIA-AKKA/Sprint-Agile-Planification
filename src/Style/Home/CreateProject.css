@@ -108,21 +108,21 @@
     height:90%;
     display:flex;
 }
-.firstBox
+.form2 .firstBox
 {
     /* background:rgb(39, 3, 83); */
     width:50%;
     height:100%;
     /* display:flex; */
 }
-.firstBox div
+.form2 .firstBox div
 {
     /* background:rgb(210, 200, 221); */
     margin-top:20px;
     margin-left:70px;
     position: relative;
 }
-.secondBox
+.form2 .secondBox
 {
     /* background:rgb(161, 145, 181); */
     width:50%;
@@ -132,7 +132,7 @@
     justify-content:space-between;
     align-items:center;
 }
-.firstBox input[type="text"]
+.form2 .firstBox input[type="text"]
 {
     width:450px;
     height:40px;
@@ -147,7 +147,7 @@
     letter-spacing:2px;
     background:none;
 }
-.firstBox input[type="date"]
+.form2 .firstBox input[type="date"]
 {
     width:200px;
     height:40px;
@@ -162,12 +162,12 @@
     letter-spacing:2px;
     background:none;
 }
-.firstBox label
+.form2 .firstBox label
 {
     position: absolute;
     font-size:10px;
 }
-.secondBox input[type="number"]
+.form2 .secondBox input[type="number"]
 {
     width:300px;
     height:40px;
@@ -182,7 +182,7 @@
     letter-spacing:2px;
     background:none;
 }
-.secondBox button
+.form2 .secondBox button
 {
     height:40px;
     width:20%;
