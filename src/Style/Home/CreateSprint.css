@@ -212,7 +212,7 @@
 
 .createSprint .titleSprint
 {
-    /* background:pink; */
+    /* background:rgb(227, 8, 44); */
     color:#463F57;
     width:100%;
     height:25%;
@@ -369,5 +369,44 @@
     top:-80px;
     left:80px;
 }
-/*================ Form 4 ====================*/
 
+/*================ Form 4 ====================*/
+.formSprint4
+{
+    /* background:teal; */
+    width:100%;
+    height:90%;
+    display:flex;
+}
+.formSprint4 .tickets
+{
+    /* background:rgb(227, 221, 234); */
+    width:80%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow-y:auto;
+    flex-wrap: wrap; 
+}
+.formSprint4 .secondBox
+{
+    /* background:rgb(132, 168, 184); */
+    width:20%;
+    height:100%;
+    display:flex;
+    justify-content: flex-start;
+    align-items:flex-end;
+}
+.formSprint4 .secondBox button
+{
+    height:40px;
+    width:100%;
+    background:none;
+    border-radius:5px;
+    border:1px solid #463F57;
+    outline:none;
+    color:#463F57;
+    cursor:pointer;
+    text-transform: uppercase;
+}

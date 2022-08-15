@@ -1,12 +1,11 @@
 
 import '../../../Style/Home/StateProject.css';
+import Project from './Project';
 // import { useState } from "react";
 
 
 const StateProject = (props) => 
 {
-    
-    const projects = [1,2,3,4,5,6]
 
     return (
         <div className='stateProject'>
@@ -14,7 +13,7 @@ const StateProject = (props) =>
                 <h1>PROJECT</h1>
                 <h4>STATE</h4>
             </div>
-            {projects.map((index) => <div key={index} className='test'>project</div>)}
+            <Project />
         </div>
     )
 }

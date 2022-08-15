@@ -40,7 +40,8 @@ const Home = (props) =>
                     {operation === 'list_p' ? <ListProject/> : operation === 'create_p'
                                             ? <CreateProject/> : operation === 'sprint_p' 
                                             ? <CreateSprint/> : operation === 'consult_p'
-                                            ? <StateProject/> : null} 
+                                            ? <StateProject/> : operation === 'profil'
+                                            ? null : null} 
                 </section>
                 <footer></footer>
             </section>

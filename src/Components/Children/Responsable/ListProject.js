@@ -16,7 +16,7 @@ const ListProject = (props) =>
                 <h1>PROJECT</h1>
                 <h4>LIST</h4>
             </div>
-            <Project setInfo={setInfo}/>
+            <Project setInfo={setInfo}/><Project setInfo={setInfo}/>
             { bullInfo && 
             <section className='info_project'>
                 <header><img src={close} alt="Close icon" onClick={() => setInfo(false)}></img></header>

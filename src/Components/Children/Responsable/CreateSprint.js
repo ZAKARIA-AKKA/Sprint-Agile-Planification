@@ -1,13 +1,17 @@
 
 import '../../../Style/Home/CreateSprint.css';
 import closeIcon from '../../../Asset/Static-Img/arrow-left.png'
+import add from '../../../Asset/Static-Img/plus.png'
 import { useEffect, useState } from "react";
+import Ticket from './Ticket';
+import UpdateTicket from './UpdateTicket';
 
 
 const CreateSprint = (props) => 
 {
     const [passage,setPassage] = useState("1");
-    const [ref,setRef] = useState('');
+    const [operation,setOperation] = useState("..."); // pour déterminer le genre de l'operation effectué sur le ticket (ajout ou modification ) 
+    const [ref,setRef] = useState(''); // Pour générer un id ou une référence aléatoirement
 
 
     useEffect(()=>{
@@ -68,7 +72,7 @@ const CreateSprint = (props) =>
                                 <div className='createticket'>
                                     <label>Tickets 1 / 3</label>
                                     <div className='up'>
-                                        <input type="text" placeholder='Nom de Sprint'/>
+                                        <input type="text" placeholder='Nom de Ticket'/>
                                         <input list="ressources" id="mesRessources" name="mesRessources" placeholder='Ressources'/>
                                         <datalist id="ressources">
                                             <option value='AKKA ZAKARIA'></option>
@@ -76,7 +80,7 @@ const CreateSprint = (props) =>
                                         </datalist>
                                     </div>
                                     <div className='down'>
-                                        <input type="text" placeholder='Description de Sprint'/>
+                                        <input type="text" placeholder='Description de Ticket'/>
                                         <input type="checkBox" placeholder='Description de Sprint'/>
                                     </div>
                                 </div>
@@ -89,20 +93,25 @@ const CreateSprint = (props) =>
                         : passage === '4' ?
                         <form className='formSprint4'>
                             <div className='tickets'>                               
-
+                                <Ticket setPassage={setPassage} setOperation={setOperation} />
                             </div>
                             <div className='secondBox'>
-                                <button onClick={(e) => { e.preventDefault();setPassage("1")}}>SUIVANT</button>
+                                <button onClick={(e) => { e.preventDefault();setPassage("1")}}>démarrer le sprint</button>
                                 <img src={closeIcon} alt='closeIcon' className='closeIcon CloseSection' onClick={() => setPassage('3')}/>
+                                <img src={add} alt='Ajouter Un Ticket' className='addIcon' onClick={() => {setPassage('5');setOperation('ajouter')}}/>
                             </div>
                         </form>
+                        : passage === '5' ?
+                            <UpdateTicket setPassage={setPassage}  operation={operation}/>
                         : null
                     }
                     <footer>
-                        <div style={passage === '1' ? {'background':'#463F57'} : {'background':'none'}}></div>
-                        <div style={passage === '2' ? {'background':'#463F57'} : {'background':'none'}}></div>
-                        <div style={passage === '3' ? {'background':'#463F57'} : {'background':'none'}}></div>
-                        <div style={passage === '4' ? {'background':'#463F57'} : {'background':'none'}}></div>
+                        {passage !== '5' && <>
+                            <div style={passage === '1' ? {'background':'#463F57'} : {'background':'none'}}></div>
+                            <div style={passage === '2' ? {'background':'#463F57'} : {'background':'none'}}></div>
+                            <div style={passage === '3' ? {'background':'#463F57'} : {'background':'none'}}></div>
+                            <div style={passage === '4' ? {'background':'#463F57'} : {'background':'none'}}></div>
+                        </>}
                     </footer>
                 </section>
             </div>
