@@ -22,9 +22,9 @@ const Project = (props) =>
                         <label>25 / 100</label>
                         <div><span></span></div>
                     </div>
-                    <div className='detail'>
-                        <button onClick={() => props.setInfo(true)}>Détail</button>
-                        <button disabled>Consulter</button>
+                    <div className={props.sign ? 'detail':'detail hov'}>
+                        <button onClick={() => props.setInfo(true)} className={props.sign ? null : 'list'}>Détail</button>
+                        {props.sign && <button>Consulter</button>}
                     </div>
                 </div>
             </div>

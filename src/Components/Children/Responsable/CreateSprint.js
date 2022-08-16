@@ -3,6 +3,7 @@ import '../../../Style/Home/CreateSprint.css';
 import closeIcon from '../../../Asset/Static-Img/arrow-left.png'
 import add from '../../../Asset/Static-Img/plus.png'
 import { useEffect, useState } from "react";
+// import { DragDropContext,Droppable,Draggable} from 'react-beautiful-dnd';
 import Ticket from './Ticket';
 import UpdateTicket from './UpdateTicket';
 
@@ -12,7 +13,7 @@ const CreateSprint = (props) =>
     const [passage,setPassage] = useState("1");
     const [operation,setOperation] = useState("..."); // pour déterminer le genre de l'operation effectué sur le ticket (ajout ou modification ) 
     const [ref,setRef] = useState(''); // Pour générer un id ou une référence aléatoirement
-
+    const data = [1,2,3];
 
     useEffect(()=>{
 
@@ -92,8 +93,8 @@ const CreateSprint = (props) =>
                         </form>
                         : passage === '4' ?
                         <form className='formSprint4'>
-                            <div className='tickets'>                               
-                                <Ticket setPassage={setPassage} setOperation={setOperation} />
+                            <div className='tickets'>
+                                {data.map((item) => <Ticket setPassage={setPassage} setOperation={setOperation} key={item}/> )}
                             </div>
                             <div className='secondBox'>
                                 <button onClick={(e) => { e.preventDefault();setPassage("1")}}>démarrer le sprint</button>

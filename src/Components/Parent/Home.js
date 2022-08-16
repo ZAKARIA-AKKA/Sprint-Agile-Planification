@@ -6,6 +6,7 @@ import ListProject from '../Children/Responsable/ListProject';
 import CreateProject from '../Children/Responsable/CreateProject';
 import StateProject from '../Children/Responsable/StateProject';
 import CreateSprint from '../Children/Responsable/CreateSprint';
+import Profil from '../Children/Responsable/Profil';
 
 
 const Home = (props) => 
@@ -41,7 +42,7 @@ const Home = (props) =>
                                             ? <CreateProject/> : operation === 'sprint_p' 
                                             ? <CreateSprint/> : operation === 'consult_p'
                                             ? <StateProject/> : operation === 'profil'
-                                            ? null : null} 
+                                            ? <Profil/> : null} 
                 </section>
                 <footer></footer>
             </section>

@@ -78,6 +78,13 @@
     align-items:center;
     /* background: red; */
 }
+.hov:hover /* hover pour le button de detail */
+{
+    background: #C9D6FF;
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+    /* transition:all 1s ease; */
+}
 .detail button
 {
     border:none;
@@ -93,7 +100,10 @@
     background:#463F57;
     color:white;
 }
-
+.detail .list
+{
+    letter-spacing:5px;
+}
 .etatAvencement
 {
     /* background:orange; */
