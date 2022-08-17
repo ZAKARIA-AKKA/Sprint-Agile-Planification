@@ -3,7 +3,7 @@ import '../../../Style/Home/CreateSprint.css';
 import closeIcon from '../../../Asset/Static-Img/arrow-left.png'
 import add from '../../../Asset/Static-Img/plus.png'
 import { useEffect, useState } from "react";
-// import { DragDropContext,Droppable,Draggable} from 'react-beautiful-dnd';
+import { DragDropContext,Droppable,Draggable} from 'react-beautiful-dnd';
 import Ticket from './Ticket';
 import UpdateTicket from './UpdateTicket';
 
@@ -13,7 +13,7 @@ const CreateSprint = (props) =>
     const [passage,setPassage] = useState("1");
     const [operation,setOperation] = useState("..."); // pour déterminer le genre de l'operation effectué sur le ticket (ajout ou modification ) 
     const [ref,setRef] = useState(''); // Pour générer un id ou une référence aléatoirement
-    const data = [1,2,3];
+    const [save,setSave] = useState([1,2,3]);
 
     useEffect(()=>{
 
@@ -21,6 +21,17 @@ const CreateSprint = (props) =>
         catch { console.log('Il doit changer la référence de projet') }
         
     },[])
+
+    function dargAndDrop(result) 
+    {
+        if (!result.destination) return;
+
+        const items = Array.from(save);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+
+        setSave(items);
+    }
     return (
         <div className='createSprint'>
             { passage === '1' || passage === '2' ?
@@ -93,14 +104,31 @@ const CreateSprint = (props) =>
                         </form>
                         : passage === '4' ?
                         <form className='formSprint4'>
-                            <div className='tickets'>
-                                {data.map((item) => <Ticket setPassage={setPassage} setOperation={setOperation} key={item}/> )}
-                            </div>
-                            <div className='secondBox'>
-                                <button onClick={(e) => { e.preventDefault();setPassage("1")}}>démarrer le sprint</button>
-                                <img src={closeIcon} alt='closeIcon' className='closeIcon CloseSection' onClick={() => setPassage('3')}/>
-                                <img src={add} alt='Ajouter Un Ticket' className='addIcon' onClick={() => {setPassage('5');setOperation('ajouter')}}/>
-                            </div>
+                            <DragDropContext onDragEnd={dargAndDrop}>
+                                <Droppable droppableId="tickets">
+                                {provided => (
+                                    <div className='tickets' ref={provided.innerRef} {...provided.droppableProps}>
+                                        {save.map((item,index) =>
+                                            <Draggable key={item} draggableId={item.toString()} index={index}>
+                                            {provided => (
+                                                <div className='ticket' key={item} {...provided.dragHandleProps} ref={provided.innerRef} {...provided.draggableProps}>
+                                                    <Ticket setPassage={setPassage} setOperation={setOperation}  />
+                                                </div>
+                                            )}
+                                            </Draggable> 
+                                        )}
+                                        {provided.placeholder}
+                                    </div>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
+                                <div className='secondBox'>
+                                    <button onClick={(e) => { e.preventDefault();setPassage("1")}}>démarrer le sprint</button>
+                                    <img src={closeIcon} alt='closeIcon' className='closeIcon CloseSection' onClick={() => setPassage('3')}/>
+                                    <img src={add} alt='Ajouter Un Ticket' className='addIcon' onClick={() => {setPassage('5');setOperation('ajouter')}}/>
+                                </div> 
+                                    
+                                
                         </form>
                         : passage === '5' ?
                             <UpdateTicket setPassage={setPassage}  operation={operation}/>

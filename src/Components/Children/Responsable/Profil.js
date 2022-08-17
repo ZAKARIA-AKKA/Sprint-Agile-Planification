@@ -6,8 +6,21 @@ import InputComposante from './InputComposante';
 
 const Profil = (props) => 
 {
-
-    const [updateInfo,setUpdateInfo] = useState(true);
+    let msg = console.log;
+    const [updateInfo,setUpdateInfo] = useState(false);
+    const readProfilIgm = (e) => 
+    {
+        let photo = document.getElementById('photo');
+        let file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.addEventListener('load',() => {
+            let src = reader.result;
+            photo.src = src
+        })
+        msg()
+    }
+    
 
     return (
 
@@ -35,20 +48,32 @@ const Profil = (props) =>
 
                     <div className='userphoto'>
                         <div className='userName'><span>AKKA</span><span>ZAKARIA</span></div>
-                        <img src={avatar} alt='user' />
+                        <img src={avatar} alt='user'/>
                     </div>
                 </section>
                 :
                 <section className='updateUserInfo'>
                     <header>
-                        <label htmlFor='choseImage'><img src={avatar} alt='user' /></label>
-                        <input type='file' id='choseImage' hidden/>
+                        <label htmlFor='choseImage'><img src={avatar} alt='user' id='photo'/></label>
+                        <input type='file' id='choseImage' hidden onChange={readProfilIgm}/>
                         <div className='nameAvatar'>ZAKARIA AKKA</div> 
                     </header>
                     <form className='changeInfo'>
                         <div className='box'>
                             <InputComposante type='text' nom='Réf' valeur=''/>
                             <InputComposante type='text' nom='Nom-Prenom' valeur=''/>
+                        </div>
+                         <div className='box'>
+                            <InputComposante type='text' nom='Tél' valeur=''/>
+                            <InputComposante type='text' nom='Adresse' valeur=''/>
+                        </div>
+                        <div className='box'>
+                            <InputComposante type='text' nom='E-mail' valeur=''/>
+                            <InputComposante type='password' nom='Mot de passe' valeur=''/>
+                        </div>
+                        <div className='box'>
+                            <textarea></textarea>
+                            <button>MODIFIER PROFIL</button>
                         </div>
                     </form>
                     <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => setUpdateInfo(false)}/>

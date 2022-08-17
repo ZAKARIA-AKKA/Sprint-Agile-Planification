@@ -7,7 +7,7 @@ import MenuButton from './MenuButton';
 
 const Menu = (props) => 
 { 
-    const icons = [{name : "house", title : "Liste"},{name : "compass-drafting", title : "Create Projet"},{name : "boxes-stacked", title : "Create Sprint"},{name : "chart-pie", title : "Chart Projet"},{name : "user", title : "Profil"}];
+    const icons = [{name : "house", title : "Liste"},{name : "compass-drafting", title : "Create Projet"},{name : "boxes-stacked", title : "Create Sprint"},{name : "chart-pie", title : "Report Projet"},{name : "user", title : "Profil"}];
     return (
         <nav className='menu'>
             <header className='logo'> <img src={logo} alt='logo' /> </header>
