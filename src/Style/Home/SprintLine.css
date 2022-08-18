@@ -1,0 +1,29 @@
+.sprintLine
+{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-end;
+    align-items:center;
+    /* background:rgb(232, 162, 162); */
+    width:30px;
+    height:90%;
+    position: relative;
+}
+.sprintLine .sprint
+{
+    width:0.5px;
+    height:100%;
+    background:#463F57;
+    /* border:1px solid #463F57; */
+}
+.akka
+{
+    width:200px;
+    height:50px;
+    background:white;
+    position: absolute;
+    top:-15px;
+    left:40px;
+    border-radius:20px;
+    display:none;
+}

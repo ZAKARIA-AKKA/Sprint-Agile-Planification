@@ -6,7 +6,6 @@ import InputComposante from './InputComposante';
 
 const Profil = (props) => 
 {
-    let msg = console.log;
     const [updateInfo,setUpdateInfo] = useState(false);
     const readProfilIgm = (e) => 
     {
@@ -18,7 +17,6 @@ const Profil = (props) =>
             let src = reader.result;
             photo.src = src
         })
-        msg()
     }
     
 
