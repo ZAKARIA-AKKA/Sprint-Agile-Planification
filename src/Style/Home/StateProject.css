@@ -124,9 +124,10 @@
     width:100%;
     height:50%;
     /* background:rgb(160, 211, 202); */
-     display: flex;
-    justify-content:space-around;
+    display: flex;
+    justify-content:flex-start;
     align-items: flex-end;
+    position: relative;
 
 }
 .etatChangable .chartPro .ListAvencemant .avn_Down
@@ -136,19 +137,19 @@
     /* background:rgb(21, 155, 88); */
     display: flex;
     justify-content:space-around;
+    position: relative;
 }
 .etatChangable .chainePro
 {
     width:100%;
     height:100%;
-    /* background:rgb(214, 176, 94); */
+    background:rgb(214, 176, 94);
     display:flex;
     justify-content:center;
     align-items:center;
     flex-wrap: wrap;
     overflow-y: auto;
 }
-
 
 
 

@@ -24,7 +24,7 @@ const Project = (props) =>
                     </div>
                     <div className={props.sign ? 'detail':'detail hov'}>
                         <button onClick={() => props.setInfo(true)} className={props.sign ? null : 'list'}>Détail</button>
-                        {props.sign && <button onClick={() => props.setPassage(true)}>Consulter</button>}
+                        {props.sign && <button onClick={() => props.setPassage('2')}>Consulter</button>}
                     </div>
                 </div>
             </div>

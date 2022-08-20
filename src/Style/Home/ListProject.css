@@ -59,12 +59,23 @@
     justify-content:flex-end;
     align-items: center;
 }
-.info_project header img
+/* .info_project header img
 {
     width:25px;
     height:25px;
     margin-right:50px;
     cursor: pointer;
+} */
+.info_project header i
+{
+    font-size:2.5em;
+    cursor: pointer;
+    color:white;
+    position:absolute;
+    top:45%;
+    left:0;
+    transform: translateY(-45%);
+    transform: rotate(90deg);
 }
 .info_project section
 {

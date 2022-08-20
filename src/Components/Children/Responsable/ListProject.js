@@ -1,6 +1,6 @@
 
 import '../../../Style/Home/ListProject.css';
-import close from '../../../Asset/Static-Img/cross-mark.png'
+// import close from '../../../Asset/Static-Img/cross-mark.png'
 import { useState } from "react";
 import Project from './Project';
 
@@ -19,7 +19,7 @@ const ListProject = (props) =>
             <Project setInfo={setInfo} sign={false}/><Project setInfo={setInfo} sign={false}/>
             { bullInfo && 
             <section className='info_project'>
-                <header><img src={close} alt="Close icon" onClick={() => setInfo(false)}></img></header>
+                <header><i className="fa-solid fa-minus" onClick={() => setInfo(false)}></i></header>
                 <section>
                     <h1>Project - 1</h1>
                     <p>

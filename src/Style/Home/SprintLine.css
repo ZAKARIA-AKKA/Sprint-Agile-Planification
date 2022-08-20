@@ -7,7 +7,7 @@
     /* background:rgb(232, 162, 162); */
     width:30px;
     height:90%;
-    position: relative;
+    position: absolute;
 }
 .sprintLine .sprint
 {
@@ -16,7 +16,7 @@
     background:#463F57;
     /* border:1px solid #463F57; */
 }
-.akka
+.sprintLine .info
 {
     width:200px;
     height:50px;
@@ -25,5 +25,7 @@
     top:-15px;
     left:40px;
     border-radius:20px;
-    display:none;
+    z-index:2;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /* display:none; */
 }
