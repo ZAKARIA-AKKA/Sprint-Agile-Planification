@@ -5,11 +5,12 @@ import closeIcon from '../../../Asset/Static-Img/arrow-left.png'
 import Project from './Project';
 import { useState } from "react";
 import SprintLine from './SprintLine';
+import SprintOrTicket from './SprintOrTicket';
 
 
 const StateProject = (props) => {
     const [passage, setPassage] = useState('1');
-    const [form, setForm] = useState('chart');
+    const [form, setForm] = useState('chart'); // pour faire le choix d'affiche les sprint sous la forme list ou bien chart
     const [bullInfo, setInfo] = useState(false);
     let dateDepart = '2/14/2022';
     let dateFin = '5/9/2023';
@@ -109,6 +110,8 @@ const StateProject = (props) => {
                         <h4>STATE</h4>
                     </div>
                     <Project setInfo={setInfo} setPassage={setPassage} sign={true} />
+                    <Project setInfo={setInfo} setPassage={setPassage} sign={true} />
+
                     {bullInfo &&
                         <section className='info_project'>
                             <header>
@@ -136,11 +139,12 @@ const StateProject = (props) => {
                 :
                 <div className='report_1'>
                     <div className='title'>
-                        <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => setPassage('1')} />
-                        <h4>SPRINTS</h4>
+                        <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => setPassage(passage === '3' ? '2' : '1')} />
+                        <h4>{passage === '3' ? 'TICKETS' : 'SPRINTS'}</h4>
                         <h1>PROJECT</h1>
                     </div>
-                    <section className='etatChangable'>
+                    {passage === '2' ?
+                        <section className='etatChangable'>
                         {form === 'chart' ?
                             <div className='chartPro'>
                                 <abbr title='Départ'><div className='porte'></div></abbr>
@@ -148,15 +152,16 @@ const StateProject = (props) => {
                                 <abbr title='Fin'><div className='porte'></div></abbr>
                                 <div className='ListAvencemant'>
                                     <div className='avn_Up'>
-                                        <SprintLine taille={4 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint)}/>
-                                        <SprintLine taille={6 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint2)}/>
+                                        <SprintLine taille={4 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint)} setPassage={setPassage}/>
+                                        <SprintLine taille={6 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint2)} setPassage={setPassage}/>
                                     </div>
                                     <div className='avn_Down'></div>
                                 </div>
                             </div>
                             :
                             <div className='chainePro'>
-
+                                    <SprintOrTicket setPassage={setPassage} choix='sprint'/>
+                                    <SprintOrTicket setPassage={setPassage} choix='sprint'/>
                             </div>
                         }
                         <div className='chart_etat'>
@@ -170,6 +175,13 @@ const StateProject = (props) => {
                             </div>
                         </div>
                     </section>
+                    :
+                    <section className='etatChangable'>
+                        <SprintOrTicket choix='ticket'/>
+                        <SprintOrTicket choix='ticket'/>
+                    </section>
+                }
+                    
                 </div>
             }
         </>

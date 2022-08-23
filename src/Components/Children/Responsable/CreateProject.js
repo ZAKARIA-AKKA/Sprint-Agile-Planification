@@ -45,7 +45,7 @@ const CreateProject = (props) =>
                             </div>
                             <div className='secondBox'>
                                 <input type="number" placeholder='Budget - E'/>
-                                <button>CREER</button>
+                                <button>CREER PROJET</button>
                                 <img src={closeIcon} alt='closeIcon' className='closeIcon CloseSection' onClick={() => setPassage(false)}/>
                             </div>
                         </form>

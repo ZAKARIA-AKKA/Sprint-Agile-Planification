@@ -91,7 +91,7 @@
     width:15%;
     background:none;
     border-radius:5px;
-    border:1px solid #463F57;
+    border:3px solid #463F57;
     outline:none;
     color:#463F57;
     /* margin-bottom:50px; */
@@ -185,14 +185,13 @@
 .form2 .secondBox button
 {
     height:40px;
-    width:20%;
     background:none;
     border-radius:5px;
-    border:1px solid #463F57;
+    border:3px solid #463F57;
     outline:none;
     color:#463F57;
-    /* margin-bottom:50px; */
-    margin-left:350px;
+    padding:0 25px 0 25px;
+    margin-left:320px;
     cursor:pointer;
 }
 .CloseSection
