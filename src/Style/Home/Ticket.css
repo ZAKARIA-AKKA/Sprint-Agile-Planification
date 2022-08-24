@@ -1,74 +1,81 @@
 
 .formSprint4 .ticket
 {
-    width:80%;
-    height:25%;
+    width:45%;
+    height:170px;
     background:white;
     margin-top:20px;
-    /* border:1px solid grey; */
+    margin-left:30px;
     border-radius:20px;
     display: flex;
     position: relative;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    overflow: hidden;
 }
-.formSprint4 .ticket:nth-child(1)
+.formSprint4 .ticket:nth-child(1),.formSprint4 .ticket:nth-child(2)
 {
     margin-top:50px;
 }
-.formSprint4 .ticket label
+.formSprint4 .ticket .ticket_info
 {
-    position: absolute;
-    top:-10px;
-    left:50px;
-    /* background:white; */
-    padding:0 30px 0 30px;
-    border-radius:5px;
-}
-.ticket_owner
-{
-    width:88%;
-    height:100%;
     /* background:teal; */
+    width:100%;
+    height:100%;
 }
-.formSprint4 .ticket_owner .desc
+.formSprint4 .ticket .ticket_info .titre
+{
+    /* background:rgb(78, 167, 43); */
+    width:100%;
+    height:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.formSprint4 .ticket .ticket_info .titre h2
 {
     width:100%;
-    height:75%;
-    /* background:rgb(136, 185, 131); */
-    display:flex;
-    justify-content:center;
-    align-items: flex-end;
+    height:95%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding-left:30px;
 }
-.formSprint4 .ticket_owner .desc p
+.formSprint4 .ticket .ticket_info .titre .line
 {
-    width:90%;
-    height:80%;
-    /* background:orange; */
-    word-wrap: break-word;
+    background:grey;
+    width:60%;
+    height:1px;
+    margin-left:10px;
+    z-index:3;
 }
-.formSprint4 .ticket_owner .owner
+.formSprint4 .ticket .ticket_info .desc
 {
+    /* background:rgb(95, 54, 65); */
     width:100%;
-    height:25%;
-    /* background:rgb(116, 138, 164); */
+    height:70%;
     display:flex;
-    justify-content:center;
-    align-items:flex-start;
+    justify-content: center;
 }
-.formSprint4 .ticket_owner .owner p
+.formSprint4 .ticket .ticket_info .desc p
 {
-    width:90%;
-    height:80%;
-    /* background:orange; */
+    text-align: justify;
+    /* background:red; */
+    width:95%;
+    height:100%;
+    padding-top:10px;
+    z-index: 3;
 }
+
 .ticket_action
 {
     width:10%;
     height:100%;
-    /* background:pink; */
     display: flex;
-    justify-content:space-around;
-    align-items:flex-end;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    /* display:none; */
 }
 .ticket_action i
 {
@@ -76,13 +83,18 @@
     color:#463F57;
     margin-bottom:15px;
     cursor: pointer;
+    /* background:red; */
+}
+.ticket_action i:nth-child(1)
+{
+    margin-top:15px;
 }
 .formSprint4 .addIcon
 {
     position: absolute;
     /* right:290px; */
     left:60px;
-    top:130px;
+    top:10px;
     width:20px;
     height:20px;
     cursor: pointer;

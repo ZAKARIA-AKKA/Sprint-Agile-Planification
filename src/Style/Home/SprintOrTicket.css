@@ -13,6 +13,7 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 .sprintOrTicket:nth-child(1),.sprintOrTicket:nth-child(2),.sprintOrTicket:nth-child(3)
 {

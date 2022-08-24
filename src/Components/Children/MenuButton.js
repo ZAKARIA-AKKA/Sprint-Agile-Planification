@@ -34,6 +34,7 @@ const MenuButton = (props) => {
             break;
             default:
                 props.setPage("connection");
+                props.setConnect(false);
                 props.setOperation("list_p");
             break;
         }            

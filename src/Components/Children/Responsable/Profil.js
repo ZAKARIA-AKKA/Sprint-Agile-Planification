@@ -16,6 +16,7 @@ const Profil = (props) =>
         reader.addEventListener('load',() => {
             let src = reader.result;
             photo.src = src
+            console.log(src)
         })
     }
     
@@ -52,11 +53,10 @@ const Profil = (props) =>
                 :
                 <section className='updateUserInfo'>
                     <header>
-                        <label htmlFor='choseImage'><img src={avatar} alt='user' id='photo'/></label>
-                        <input type='file' id='choseImage' hidden onChange={readProfilIgm}/>
+                        <label htmlFor='choseImage'><img src={avatar} alt='user' id='photo'/></label>     
                         <div className='nameAvatar'>ZAKARIA AKKA</div> 
                     </header>
-                    <form className='changeInfo'>
+                    <form className='changeInfo' encType="multipart/form-data">
                         <div className='box'>
                             <InputComposante type='text' nom='Réf' valeur=''/>
                             <InputComposante type='text' nom='Nom-Prenom' valeur=''/>
@@ -72,6 +72,7 @@ const Profil = (props) =>
                         <div className='box'>
                             <textarea></textarea>
                             <button>MODIFIER PROFIL</button>
+                            <input type='file' id='choseImage' hidden onChange={readProfilIgm}/>
                         </div>
                     </form>
                     <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => setUpdateInfo(false)}/>

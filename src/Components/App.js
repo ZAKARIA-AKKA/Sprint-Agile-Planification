@@ -7,10 +7,13 @@ import { useState } from "react";
 
 function App() {
 
-  const [page,setPage] = useState("home"); // cette etat est utilisé pour faire un vas et vient entre les pages
+  const [connect,setConnect] = useState(false); // pour garder la session ouverte en cas de de succes de connection
+  const [page,setPage] = useState("accueil"); // cette etat est utilisé pour faire un vas et vient entre les pages
   return (
     <div className="App">
-      {page === 'accueil' ? <Accueil setPage={setPage}/> : page === 'connection' ? <Connection setPage={setPage} /> : <Home setPage={setPage} />}
+      {page === 'accueil'     ? <Accueil setPage={setPage} cnx={connect}/> 
+      :page === 'connection'  ? <Connection setPage={setPage} setConnect={setConnect}/> 
+                              : <Home setPage={setPage} setConnect={setConnect}  cnx={connect}/>}
       
     </div>
   );

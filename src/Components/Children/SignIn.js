@@ -18,7 +18,7 @@ function SignIn(props)
     const virify = (e) => 
     {
         e.preventDefault();
-        if(user[0] === email && user[1] === pass) props.setPage("home")
+        if(user[0] === email && user[1] === pass) {props.setPage("home");props.setConnect(true)}
         else err[0].setAttribute("style","visibility:visible");
         
     }

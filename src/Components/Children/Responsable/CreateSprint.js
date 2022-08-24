@@ -93,7 +93,7 @@ const CreateSprint = (props) =>
                         <form className='formSprint4'>
                                     <div className='tickets'>
                                         <Ticket setPassage={setPassage} setOperation={setOperation}  />
-                                                                                     
+                                        <Ticket setPassage={setPassage} setOperation={setOperation}  />                                                   
                                     </div>
                                 <div className='secondBox'>
                                     <button onClick={(e) => { e.preventDefault();setPassage("1")}}>démarrer le sprint</button>

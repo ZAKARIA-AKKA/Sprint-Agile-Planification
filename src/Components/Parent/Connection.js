@@ -10,7 +10,7 @@ const Connection = (props) =>
     const [forgetPass,setForgetPass] = useState(false)
     return (
         <div className='connection'>
-            {forgetPass ? <ForgetPass setForgetPass={setForgetPass} setPage={props.setPage}/> : <SignIn setForgetPass={setForgetPass} setPage={props.setPage}/>}
+            {forgetPass ? <ForgetPass setForgetPass={setForgetPass} setPage={props.setPage}/> : <SignIn setForgetPass={setForgetPass} setPage={props.setPage} setConnect={props.setConnect}/>}
 
         </div>
     )

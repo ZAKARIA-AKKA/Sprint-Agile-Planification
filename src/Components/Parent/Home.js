@@ -15,7 +15,7 @@ const Home = (props) =>
     
     return (
         <div className='home'>
-            <section className='navigation_section'> <Menu setPage={props.setPage} setOperation={setOperation}/> </section>
+            <section className='navigation_section'> <Menu setPage={props.setPage} setOperation={setOperation} setConnect={props.setConnect} /> </section>
             <section className='work_section'>
                 <header>
                     <div className='search_filter'>
