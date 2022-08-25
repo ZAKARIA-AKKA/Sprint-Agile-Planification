@@ -9,13 +9,23 @@ html
     background:rgb(0, 255, 255);
     overflow: hidden;
 }
+.accueil #goUp
+{
+    position:fixed;
+    right:50px;
+    bottom:40px;
+    font-size:2em;
+    color:#E6D9C8;
+    z-index:10;
+}
 /*================ cercle de decoration =================*/
-.frant-1 .decoration
+.frant-1 .decoration,.frant-2 .decoration,.frant-3 .decoration
 {
     background:#E6D9C8;
     border:1px solid grey;
     border-radius:50%;
     position: absolute;
+    z-index:1;
 }
 .frant-1 .decoration:nth-child(3)
 {
@@ -137,27 +147,196 @@ html
     left:50%;
     transform: translate(-50%,-50%);
 }
-/* .accueil .frant-2
+/*================ section 2 =================*/
+.accueil .frant-2
 {
     width:100%;
     height:100vh;
     background:white;
-} */
-/*.accueil .frant-3
+}
+.frant-2 .decoration
+{
+    width:600px;
+    height:600px;
+    top:50%;
+    left:-300px;
+    transform: translateY(-50%);
+    z-index:1;
+}
+.frant-2 .svg
+{
+    width:550px;
+    height:550px;
+    position: absolute;
+    bottom:0;
+    right:80px;
+}
+.frant-2 .nomDeApp
+{
+    width:350px;
+    height:350px;
+    position: absolute;
+    top:-30px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.frant-2 .sap_info
+{
+    z-index:3;
+    /* background:#bdc3c7; */
+    width:50%;
+    height:350px;
+    position:absolute;
+    top:50%;
+    left:8%;
+    transform: translateY(-50%);
+    color:grey;
+}
+
+.frant-2 .sap_info .titre
+{
+    /* background:#0e78be; */
+    width:100%;
+    height:40%;
+    display:flex;
+    align-items: flex-end;
+}
+.frant-2 .sap_info .titre h1
+{
+    margin-bottom:30px;
+    margin-left:30px;
+}
+
+.frant-2 .sap_info .desc
+{
+    /* background:#6d9e18; */
+    width:100%;
+    height:60%;
+    display:flex;
+    align-items:flex-start;
+    text-align: justify;
+    font-size:1.4em;
+    line-height:35px;
+}
+.frant-2 .sap_info .desc p
+{
+    /* background:#6d9e18; */
+    width:95%;
+}
+
+/*================ section 3 =================*/
+.accueil .frant-3
 {
     width:100%;
     height:100vh;
     background:black;
+    color:white;
 }
+.frant-3 .decoration:nth-child(1)
+{
+    width:350px;
+    height:350px;
+    top:50px;
+    left:-80px;
+}
+.frant-3 .decoration:nth-child(2)
+{
+    width:600px;
+    height:600px;
+    top:50%;
+    right:-300px;
+    transform: translateY(-50%);
+    
+}
+.frant-3 .sprint_info
+{
+    width:70%;
+    height:350px;
+    /* background:pink; */
+    z-index:3;
+    position:absolute;
+    top:50%;
+    left:47%;
+    transform: translate(-50%,-50%);
+}
+.frant-3 .sprint_info .titre
+{
+    /* background:#0e78be; */
+    width:100%;
+    height:30%;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.frant-3 .sprint_info .titre h1
+{
+    margin-bottom:30px;
+    margin-left:20px;
+    font-size:3em;
+}
+
+.frant-3 .sprint_info .desc
+{
+    /* background:#6d9e18; */
+    width:100%;
+    height:70%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-size:1.4em;
+    line-height:35px;
+}
+.frant-3 .sprint_info .desc p
+{
+    /* background:#3c7c89; */
+    width:90%;
+    text-align: center;
+    font-size:1.4em;
+    line-height:40px;
+}
+/*================ section 4 =================*/
 .accueil .frant-4
 {
     width:100%;
     height:100vh;
     background:white;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
 }
-.accueil .frant-5
+.accueil .frant-4 .titre
+{
+    /* background:pink; */
+    color:#463F57;
+    font-size:2em;
+    width:60%;
+    height:20%;
+    display:flex;
+    justify-content: center;
+    align-items:flex-end;
+    padding-bottom:20px;
+}
+.accueil .frant-4 img
+{
+    width:70%;
+    height:80%;
+    /* border:1px solid red; */
+    margin-top:00px;
+}
+
+/*================ section 5 =================*/
+
+
+
+/*.accueil .frant-5
 {
     width:100%;
     height:100vh;
     background:#AEA292;
-} */
+}
+==========================================================*/
+::-webkit-scrollbar
+{
+    display:none;
+}
