@@ -12,7 +12,7 @@ const Menu = (props) =>
         <nav className='menu'>
             <header className='logo'> <img src={logo} alt='logo' onClick={() => props.setPage('accueil')}/> </header>
             <div className='navigation'>
-                {icons.map((item,index) => <MenuButton key={index} icon={item} cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation}/>)}
+                {icons.map((item,index) => <MenuButton key={index} icon={item} cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation} setShowSearch={props.setShowSearch}/>)}
             </div>
             <footer className='logout'>
                 <MenuButton icon={{name : "arrow-right-to-bracket", title : "LogOut"}} cnx={props.cnx} setPage={props.setPage} setOperation={props.setOperation} setConnect={props.setConnect}/>

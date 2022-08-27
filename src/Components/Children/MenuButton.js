@@ -14,22 +14,27 @@ const MenuButton = (props) => {
         {
             case 'house':
                 props.setOperation("list_p");
+                props.setShowSearch(true);
                 walls[0].setAttribute('style','display:block') 
             break;
             case 'compass-drafting':
                 props.setOperation("create_p");
+                props.setShowSearch(false);
                 walls[1].setAttribute('style','display:block')  
             break;
             case 'boxes-stacked':
                 props.setOperation("sprint_p");
+                props.setShowSearch(false);
                 walls[2].setAttribute('style','display:block') 
             break;
             case 'chart-pie':
                 props.setOperation("consult_p");
+                props.setShowSearch(true);
                 walls[3].setAttribute('style','display:block') 
             break;
             case 'user':
                 props.setOperation("profil");
+                props.setShowSearch(false);
                 walls[4].setAttribute('style','display:block') 
             break;
             default:

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Game Of Squids';
+    src: url('../../Asset/Font/game-of-squids/Game\ Of\ Squids.otf');
+}
 .signin
 {
     width:100%;
@@ -38,11 +42,13 @@
 {
     /* background:rgb(131, 42, 42); */
     width:100%;
-    height:10%;
+    height:13%;
     text-align: center;
     font-size:3em;
     color:#887455;
     margin-top:20px;
+    padding-left:80px;
+    font-family: 'Game Of Squids', serif;
 }
 .signIn_form
 {
@@ -103,7 +109,7 @@
 .boxOfEyes
 {
     position:absolute;
-    top:325px;
+    top:337px;
     left:560px;
 }
 .eye

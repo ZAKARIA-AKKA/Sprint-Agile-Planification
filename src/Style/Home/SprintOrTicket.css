@@ -83,8 +83,8 @@
 {
     width:220px;
     height:320px;
-    /* background:white; */
-    background:url('../../Asset/Static-Img/back9.jpg');
+    background:white;
+    background:url('../../Asset/Static-Img/back3.jpg');
     background-position: center;
     background-size:cover;
     border-radius:20px;

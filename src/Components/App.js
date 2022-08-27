@@ -9,6 +9,7 @@ function App() {
 
   const [connect,setConnect] = useState(false); // pour garder la session ouverte en cas de de succes de connection
   const [page,setPage] = useState("accueil"); // cette etat est utilisé pour faire un vas et vient entre les pages
+  
   return (
     <div className="App">
       {page === 'accueil'     ? <Accueil setPage={setPage} cnx={connect}/> 
