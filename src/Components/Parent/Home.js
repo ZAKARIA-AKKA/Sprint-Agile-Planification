@@ -35,10 +35,10 @@ const Home = (props) =>
                 </header>
                 <section className='change_section'> 
                     {operation === 'list_p' ? <ListProject/> : operation === 'create_p'
-                                            ? <CreateProject/> : operation === 'sprint_p' 
-                                            ? <CreateSprint/> : operation === 'consult_p'
+                                            ? <CreateProject owner={props.owner} /> : operation === 'sprint_p' 
+                                            ? <CreateSprint owner={props.owner} /> : operation === 'consult_p'
                                             ? <StateProject/> : operation === 'profil'
-                                            ? <Profil/> : null} 
+                                            ? <Profil  owner={props.owner} setOwner={props.setOwner}/> : null} 
                     {showNotification &&
                         <div className='noti'>
                             <div className='notification'></div>

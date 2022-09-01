@@ -18,9 +18,21 @@ function SignIn(props)
     const virify = (e) => 
     {
         e.preventDefault();
-        if(user[0] === email && user[1] === pass) {props.setPage("home");props.setConnect(true)}
-        else err[0].setAttribute("style","visibility:visible");
-        
+        fetch('http://localhost:8080/resource/list/all')
+            .then(res => res.json())
+            .then(res => {
+                res.map((user) => {
+                    if(user.email === email && user.password === pass)
+                    {
+                        props.setOwner(user);
+                        props.setPage("home");
+                        props.setConnect(true)
+                    }
+                    else{
+                        err[0].setAttribute("style","visibility:visible")
+                    }
+                })  
+            })
     }
     
     return (
