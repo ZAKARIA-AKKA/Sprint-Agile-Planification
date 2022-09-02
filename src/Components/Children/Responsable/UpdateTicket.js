@@ -36,7 +36,7 @@ const UpdateTicket = (props) =>
 
         e.preventDefault();
         let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id
-        let sprintId = 13;
+        let sprintId = props.sprintId;
         const task = {titleTask, descriptionTask,startDateTask,endDateTask,statusTask,sprintId,employeeId}
         fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
         props.setPassage('4')

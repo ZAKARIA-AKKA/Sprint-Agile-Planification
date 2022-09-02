@@ -4,11 +4,21 @@ import { useState } from "react";
 const SprintOrTicket = (props) => 
 {
     const [showOwner, setShowOwner] = useState(false);
+
+    const handelClick_1 = () => {
+
+        fetch('http://localhost:8080/sprint/tasks/' + props.data.idSprint)
+            .then(res => res.json())
+            .then(res => props.setTasks(res))
+        
+        props.setPassage('3')
+    }
+
     return (
         <>
         {props.choix === 'sprint' ? 
 
-        <div className="sprintOrTicket" onClick={() => props.setPassage('3')}>
+        <div className="sprintOrTicket" onClick={handelClick_1}>
             <div className='info'>
                 <div className='projectDecoration item2'></div>
                 <div className='projectDecoration item1'></div>

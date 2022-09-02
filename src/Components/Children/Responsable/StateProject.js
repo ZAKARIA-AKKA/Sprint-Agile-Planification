@@ -16,11 +16,8 @@ const StateProject = (props) => {
     const [sprints, setSprints] = useState([]); // pour récuperer la liste des projets 
     const [tasks, setTasks] = useState([]); // pour récuperer la liste des projets 
     const [projectDetails, setProjectDetails] = useState(); // pour récuperer les details d'un seule projet et affiché dans la section detail
-
-    let dateDepart = '2/14/2022';
-    let dateFin = '5/9/2023';
-    let dateSprint = '4/9/2022';
-    let dateSprint2 = '9/9/2022';
+    const [createur,setCreateur] = useState()
+    const [pro,setPro] = useState()
 
     useEffect(() => {
         
@@ -67,6 +64,7 @@ const StateProject = (props) => {
                 res = (annee * 365) - (mois * 30);
             }
         }
+        console.log(res)
         return Math.abs(res);
     }
     function calculeDateSprint(dep,dateCreationSprint)
@@ -122,7 +120,7 @@ const StateProject = (props) => {
                         <h1>PROJECT</h1>
                         <h4>STATE</h4>
                     </div>
-                    {projects.map((project, index) => <Project key={index} data={project} setProjectDetails={setProjectDetails} setInfo={setInfo} setPassage={setPassage} sign={true} setSprints={setSprints}/>)}
+                    {projects.map((project, index) => <Project key={index} data={project} setProjectDetails={setProjectDetails} setInfo={setInfo} setPassage={setPassage} sign={true} setSprints={setSprints} setCreateur={setCreateur} setPro={setPro}/>)}
                     {bullInfo &&
                         <section className='info_project'>
                             <header>
@@ -134,7 +132,7 @@ const StateProject = (props) => {
                                 <p>
                                     {projectDetails.descriptionProject === null ? '...' : projectDetails.descriptionProject}
                                 </p>
-                                <p>Réaliser par : AKKA ZAKARIA <br />Réf : {projectDetails.idProject === null ? '...' : projectDetails.idProject}</p>
+                                <p>Réaliser par : {createur === undefined ? '...' : (createur[0].firstName + ' ' + createur[0].firstName)} <br />Réf : {projectDetails.idProject === null ? '...' : projectDetails.idProject}</p>
                             </section>
                             <footer>
                                 <div className='etat'>Etat : {projectDetails.status === null ? '...' : projectDetails.statusProject}</div>
@@ -161,16 +159,14 @@ const StateProject = (props) => {
                                 <abbr title='Fin'><div className='porte'></div></abbr>
                                 <div className='ListAvencemant'>
                                     <div className='avn_Up'>
-                                        <SprintLine taille={4 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint)} setPassage={setPassage}/>
-                                        <SprintLine taille={6 * 10} duree={moveSprint(dateDepart,dateFin,dateSprint2)} setPassage={setPassage}/>
+                                    {sprints.map((sprint, index) => <SprintLine key={index} data={sprint} taille={sprint.numberOfTasks * 10} duree={moveSprint(pro.startDateProject,pro.endDateProject,sprint.startDateSprint)} setPassage={setPassage} setTasks={setTasks}/>)}
                                     </div>
                                     <div className='avn_Down'></div>
                                 </div>
                             </div>
                             :
                             <div className='chainePro'>
-                                    <SprintOrTicket setPassage={setPassage} choix='sprint'/>
-                                    <SprintOrTicket setPassage={setPassage} choix='sprint'/>
+                                {sprints.map((sprint, index) => <SprintOrTicket key={index} data={sprint} setPassage={setPassage} setTasks={setTasks} choix='sprint'/>)}
                             </div>
                         }
                         <div className='chart_etat'>
@@ -186,8 +182,9 @@ const StateProject = (props) => {
                     </section>
                     :
                     <section className='etatChangable'>
-                        <SprintOrTicket choix='ticket'/>
-                        <SprintOrTicket choix='ticket'/>
+                        {tasks.map((task, index) => <SprintOrTicket key={index} data={task} choix='ticket'/>)}
+                        {/* <SprintOrTicket choix='ticket'/>
+                        <SprintOrTicket choix='ticket'/> */}
                     </section>
                 }
                     

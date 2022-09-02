@@ -6,11 +6,21 @@ import { useState } from "react";
 
 const SprintLine = (props) => 
 {
-    const [showInfo,setInfo] = useState(false)
+    const [showInfo,setInfo] = useState(false);
+
+    const handelClick_1 = () => {
+
+        fetch('http://localhost:8080/sprint/tasks/' + props.data.idSprint)
+            .then(res => res.json())
+            .then(res => props.setTasks(res))
+        
+        props.setPassage('3')
+    }
+
     return (
         <div className='sprintLine' style={{'height':props.taille + '%','marginLeft': props.duree + '%'}}>
             {showInfo && <div className='info'></div>}
-            <abbr title='Inisialisation de Projet'><div className='porte' onClick={() => props.setPassage('3')} onMouseOver={() => setInfo(!showInfo)} onMouseLeave={() => setInfo(!showInfo)}></div></abbr>
+            <abbr title='Inisialisation de Projet'><div className='porte' onClick={handelClick_1} onMouseOver={() => setInfo(!showInfo)} onMouseLeave={() => setInfo(!showInfo)}></div></abbr>
             <div className='sprint'></div>
         </div>
     )

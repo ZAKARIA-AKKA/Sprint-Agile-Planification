@@ -13,7 +13,8 @@ const CreateSprint = (props) => {
     const [operation, setOperation] = useState("..."); // pour déterminer le genre de l'operation effectué sur le ticket (ajout ou modification ) 
     const [projectsList, setProjectList] = useState([]);
     //========================================================
-    const [idSprint, setIdSprint] = useState('');// Pour générer un id ou une référence aléatoirement
+    const [ref,setRef] = useState('');// Pour générer un id ou une référence aléatoirement
+    const [sprintId, setSprintId] = useState('');
     const [titleSprint, setTitle] = useState('');
     const [descriptionSprint, setDescSprint] = useState('');
     const [startDateSprint, setDateDepart] = useState('');
@@ -39,16 +40,27 @@ const CreateSprint = (props) => {
 
     useEffect(() => {
 
-        try { setIdSprint('N° ' + Math.round(Math.random() * 10000)) }
+        try { setRef('N° ' + Math.round(Math.random() * 10000)) }
         catch { console.log('Il doit changer la référence de projet') }
 
     }, [])
-    useEffect(() => {
+    useEffect((sprintId) => {
         
-            fetch('http://localhost:8080/task/list/all')
-                .then(res => res.json())
-                .then(res => setTaskList(res))
-                setWork(false);
+                if(work)
+                {
+                    fetch('http://localhost:8080/tasks/' + sprintId)
+                        .then(res => res.json())
+                        .then(res => setTaskList(res))
+                        console.log(work)
+                        setWork(false);
+                }
+                else{
+                    fetch('http://localhost:8080/task/list/all')
+                    .then(res => res.json())
+                    .then(res => setTaskList(res))
+                    setWork(false);
+                }
+                console.log('aaa')
     },[work])
 
     const handelClick_1 = (e) => {
@@ -59,6 +71,7 @@ const CreateSprint = (props) => {
             fetch('http://localhost:8080/project/list/all')
                 .then(res => res.json())
                 .then(res => setProjectList(res))
+                
         }
     }
     const handelClick_2 = (e) => {
@@ -73,13 +86,12 @@ const CreateSprint = (props) => {
             fetch('http://localhost:8080/resource/list/all')
                 .then(res => res.json())
                 .then(res => setRessourceList(res))
-
         }
     }
     const handelClick_3 = (e) => {
 
         e.preventDefault();
-        fetch('http://localhost:8080/task/list/all')
+        fetch('http://localhost:8080/sprint/tasks/' + sprintId)
                 .then(res => res.json())
                 .then(res => setTaskList(res))
         setPassage("4")
@@ -88,6 +100,7 @@ const CreateSprint = (props) => {
     const handelClick_4 = (e) => {
 
         setPassage("1")
+        setWork(false);
     }
     const change = (e) => {
 
@@ -95,14 +108,19 @@ const CreateSprint = (props) => {
             if (titleTask !== '' && ressource !== '') {
 
                 if (e.target.checked) {
-
                     setVarIncr(++incTask);
+                    fetch('http://localhost:8080/sprint/get/last')
+                        .then(res => res.json())
+                        .then(res => {
 
-                    let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id
-                    let sprintId = 31;
-                    const task = { titleTask, descriptionTask, startDateTask, endDateTask, statusTask,sprintId,employeeId }
-                    fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
-                    
+                            setSprintId(res.idSprint)
+                            let sprintId = res.idSprint
+                            let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id  
+                            const task = { titleTask, descriptionTask, startDateTask, endDateTask, statusTask,sprintId,employeeId }
+                            fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
+
+                    }) 
+
                     setTimeout(() => {
                         e.target.checked = false;
                     }, 600);
@@ -128,7 +146,7 @@ const CreateSprint = (props) => {
                 :
                 <div className='titleSprint'>
                     <h1>SPRINT</h1>
-                    <h4>{idSprint}</h4>
+                    <h4>{ref}</h4>
                 </div>
             }
             <div className={(passage === '1' || passage === '2') ? 'content ' : 'tasks'}>
@@ -136,7 +154,7 @@ const CreateSprint = (props) => {
                     {passage === '1' ?
                         <form className='formSprint1'>
                             <div>
-                                <input type="text"  value={idSprint} onChange={(e) => setIdSprint(e.target.value)} disabled/>
+                                <input type="text"  value={ref} onChange={(e) => setRef(e.target.value)} disabled/>
                                 <input type="text" placeholder='Nom de Sprint' value={titleSprint} onChange={(e) => setTitle(e.target.value)} />
                                 <input type="text" placeholder='Description de Sprint' value={descriptionSprint} onChange={(e) => setDescSprint(e.target.value)} />
                             </div>
@@ -199,7 +217,7 @@ const CreateSprint = (props) => {
 
                                     </form>
                                     : passage === '5' ?
-                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setWork={setWork}/>
+                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setWork={setWork} sprintId={sprintId}/>
                                         : null
                     }
                     <footer>
