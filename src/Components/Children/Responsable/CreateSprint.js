@@ -5,7 +5,6 @@ import add from '../../../Asset/Static-Img/plus.png'
 import { useEffect, useState } from "react";
 import Ticket from './Ticket';
 import UpdateTicket from './UpdateTicket';
-import ListProject from './ListProject';
 
 
 const CreateSprint = (props) => {
@@ -44,24 +43,24 @@ const CreateSprint = (props) => {
         catch { console.log('Il doit changer la référence de projet') }
 
     }, [])
-    useEffect((sprintId) => {
-        
-                if(work)
-                {
-                    fetch('http://localhost:8080/tasks/' + sprintId)
-                        .then(res => res.json())
-                        .then(res => setTaskList(res))
-                        console.log(work)
-                        setWork(false);
-                }
-                else{
-                    fetch('http://localhost:8080/task/list/all')
-                    .then(res => res.json())
-                    .then(res => setTaskList(res))
-                    setWork(false);
-                }
-                console.log('aaa')
-    },[work])
+    // useEffect((sprintId) => {
+    //             console.log('done')
+    //             // if(work)
+    //             // {
+    //             //     fetch('http://localhost:8080/tasks/' + sprintId)
+    //             //         .then(res => res.json())
+    //             //         .then(res => setTaskList(res))
+    //             //         console.log('1')
+    //             //         // setWork(false);
+    //             // }
+    //             // else{
+    //                 // fetch('http://localhost:8080/task/list/all')
+    //                 //     .then(res => res.json())
+    //                 //     .then(res => setTaskList(res))
+    //                 // console.log('2')
+    //                 // setWork(false);
+    //             // }
+    // },[work])
 
     const handelClick_1 = (e) => {
 
@@ -112,7 +111,7 @@ const CreateSprint = (props) => {
                     fetch('http://localhost:8080/sprint/get/last')
                         .then(res => res.json())
                         .then(res => {
-
+                            console.log(res.idSprint)
                             setSprintId(res.idSprint)
                             let sprintId = res.idSprint
                             let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id  
@@ -206,7 +205,7 @@ const CreateSprint = (props) => {
                                 : passage === '4' ?
                                     <form className='formSprint4'>
                                         <div className='tickets'>
-                                            {TaskList.map((task, index) => <Ticket key={index} task={task} setPassage={setPassage} setOperation={setOperation} setDataTaskUpdate={setDataTaskUpdate} setWork={setWork}/>)}
+                                            {TaskList.map((task, index) => <Ticket key={index} task={task} setPassage={setPassage} setOperation={setOperation} setDataTaskUpdate={setDataTaskUpdate} setTaskList={setTaskList}/>)}
                                         </div>
                                         <div className='secondBox'>
                                             <button onClick={handelClick_4}>démarrer le sprint</button>
@@ -217,7 +216,7 @@ const CreateSprint = (props) => {
 
                                     </form>
                                     : passage === '5' ?
-                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setWork={setWork} sprintId={sprintId}/>
+                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setTaskList={setTaskList} sprintId={sprintId}/>
                                         : null
                     }
                     <footer>

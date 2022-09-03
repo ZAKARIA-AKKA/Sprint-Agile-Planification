@@ -29,18 +29,27 @@ const UpdateTicket = (props) =>
         let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id
         const task = {idTask,titleTask, descriptionTask,startDateTask,endDateTask,statusTask,sprintId,employeeId}
         fetch('http://localhost:8080/task/update', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
+            .then(() => {
+
+                fetch('http://localhost:8080/sprint/tasks/' + sprintId)
+                .then(res => res.json())
+                .then(res => props.setTaskList(res))
+            })
         props.setPassage('4')
-        props.setWork(true);
     }
     const onCreate = (e) => {
 
         e.preventDefault();
         let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id
-        let sprintId = props.sprintId;
         const task = {titleTask, descriptionTask,startDateTask,endDateTask,statusTask,sprintId,employeeId}
         fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
+            .then(() => {
+
+                fetch('http://localhost:8080/sprint/tasks/' + sprintId)
+                .then(res => res.json())
+                .then(res => props.setTaskList(res))
+            })
         props.setPassage('4')
-        props.setWork(true);
     }
 
     return (

@@ -40,6 +40,7 @@
     justify-content:flex-start;
     align-items: center;
     padding-left:30px;
+    z-index:10;
 }
 .formSprint4 .ticket .ticket_info .titre .line
 {

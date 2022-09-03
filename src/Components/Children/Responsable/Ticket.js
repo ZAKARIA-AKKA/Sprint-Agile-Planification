@@ -10,8 +10,16 @@ const Ticket = (props) =>
 
     const deleteTask = () => {
         let id = props.task.idTask;
+        // let sprintId = props.task.sprintId;
         fetch('http://localhost:8080/task/delete/'+ id)
-        props.setWork(true);
+            .then(() => {
+
+                let sprintId = props.task.sprintId
+                fetch('http://localhost:8080/sprint/tasks/' + sprintId)
+                .then(res => res.json())
+                .then(res => props.setTaskList(res))
+            })
+
     }
     return (
         <div className='ticket' onMouseOver={() => setShowAction(true)} onMouseLeave={() => setShowAction(false)}>

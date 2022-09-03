@@ -64,7 +64,6 @@ const StateProject = (props) => {
                 res = (annee * 365) - (mois * 30);
             }
         }
-        console.log(res)
         return Math.abs(res);
     }
     function calculeDateSprint(dep,dateCreationSprint)

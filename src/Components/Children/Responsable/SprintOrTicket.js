@@ -1,9 +1,10 @@
 import '../../../Style/Home/SprintOrTicket.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SprintOrTicket = (props) => 
 {
     const [showOwner, setShowOwner] = useState(false);
+    const [creator, setCreator] = useState('');
 
     const handelClick_1 = () => {
 
@@ -14,6 +15,17 @@ const SprintOrTicket = (props) =>
         props.setPassage('3')
     }
 
+    useEffect(() => {
+
+        fetch('http://localhost:8080/resource/list/all')
+                .then(res => res.json())
+                .then(res => {
+                    let u = res.filter((user) => user.id === props.data.employeeId)
+                    setCreator(u[0].firstName  + ' ' + u[0].lastName)
+                })
+
+    },[])
+
     return (
         <>
         {props.choix === 'sprint' ? 
@@ -23,13 +35,12 @@ const SprintOrTicket = (props) =>
                 <div className='projectDecoration item2'></div>
                 <div className='projectDecoration item1'></div>
                 <div className='titre'>
-                    <h2>Sprint - 1</h2>
+                    <h2>{props.data.titleSprint}</h2>
                     <div className='line'></div>
                 </div>
                 <div className='desc'>
                     <p>
-                        Project - 1 est une itération de développement de la méthode Scrum. 
-                        Il dure généralement entre deux et quatre semaines.
+                        {props.data.descriptionSprint}
                     </p>
                 </div>
             </div>
@@ -37,14 +48,13 @@ const SprintOrTicket = (props) =>
         :
         <div className="uneTache" onMouseOver={() => setShowOwner(true)} onMouseLeave={() => setShowOwner(false)}>
             <div className='tache'>
-                <div className='titre'>TICKET - 1</div>
+                <div className='titre'>{props.data.titleTask}</div>
                 {showOwner && 
                 <div className='owner'>
                     <div className='line'></div>
-                    <i className="fa-solid fa-user-tag"> : AKKA ZAKARIA</i>
+                    <i className="fa-solid fa-user-tag"> : {creator}</i>
                     <p>
-                        Project - 1 est une itération de développement de la méthode Scrum. 
-                        Il dure généralement entre deux et quatre semaines.
+                        {props.data.descriptionTask}
                     </p>
                 </div>}
             </div>

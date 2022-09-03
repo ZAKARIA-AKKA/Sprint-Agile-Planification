@@ -22,7 +22,6 @@ const Profil = (props) =>
         fetch('http://localhost:8080/resource/show/' + id)
             .then(res => res.json())
             .then(res => props.setOwner(res))
-
     },[updateInfo])
 
     const handelClick_1 = (e) => {
