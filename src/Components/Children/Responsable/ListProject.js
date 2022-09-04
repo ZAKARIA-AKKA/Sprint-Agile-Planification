@@ -17,6 +17,12 @@ const ListProject = (props) => {
             .then(res => res.json())
             .then(res => setProjects(res))
     },[])
+
+    useEffect(() => {
+        
+         setProjects(props.proList)
+
+    },[props.proList])
     
 
     return (
@@ -28,7 +34,11 @@ const ListProject = (props) => {
             {projects.map((project, index) => <Project key={index} data={project} setProjectDetails={setProjectDetails} setInfo={setInfo} sign={false} setCreateur={setCreateur}/>)}
             {bullInfo &&
                 <section className='info_project'>
-                    <header><i className="fa-solid fa-minus" onClick={() => setInfo(false)}></i></header>
+                    <header>
+                        <i className="fa-solid fa-minus" onClick={() => setInfo(false)}></i>
+                        <button>Update</button>
+                        <button>Delete</button>
+                    </header>
                     <section>
                         <h1>{projectDetails.titleProject === null ? 'Project' : projectDetails.titleProject}</h1>
                         <p>

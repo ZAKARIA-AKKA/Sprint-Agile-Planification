@@ -27,6 +27,13 @@ const StateProject = (props) => {
 
     }, [])
 
+    useEffect(() => {
+        
+        setProjects(props.proList)
+
+   },[props.proList])
+
+
     function calculeDateProject(dep,fin) 
     {
         let dateDépart = new Date(dep)
@@ -119,7 +126,7 @@ const StateProject = (props) => {
                         <h1>PROJECT</h1>
                         <h4>STATE</h4>
                     </div>
-                    {projects.map((project, index) => <Project key={index} data={project} setProjectDetails={setProjectDetails} setInfo={setInfo} setPassage={setPassage} sign={true} setSprints={setSprints} setCreateur={setCreateur} setPro={setPro}/>)}
+                    {projects.map((project, index) => <Project key={index} data={project} setProjectDetails={setProjectDetails} setInfo={setInfo} setPassage={setPassage} sign={true} setSprints={setSprints} setCreateur={setCreateur} setPro={setPro} setShowSearch={props.setShowSearch}/>)}
                     {bullInfo &&
                         <section className='info_project'>
                             <header>
@@ -145,7 +152,7 @@ const StateProject = (props) => {
                 :
                 <div className='report_1'>
                     <div className='title'>
-                        <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => setPassage(passage === '3' ? '2' : '1')} />
+                        <img src={closeIcon} alt='closeIcon' className='closeIcon' onClick={() => {setPassage(passage === '3' ? '2' : '1');props.setShowSearch(passage !== '3' && true)}} />
                         <h4>{passage === '3' ? 'TICKETS' : 'SPRINTS'}</h4>
                         <h1>PROJECT</h1>
                     </div>
@@ -153,9 +160,9 @@ const StateProject = (props) => {
                         <section className='etatChangable'>
                         {form === 'chart' ?
                             <div className='chartPro'>
-                                <abbr title='Départ'><div className='porte'></div></abbr>
+                                <abbr title={pro.startDateProject}><div className='porte'></div></abbr>
                                 <div className='deadLine'></div>
-                                <abbr title='Fin'><div className='porte'></div></abbr>
+                                <abbr title={pro.endDateProject}><div className='porte'></div></abbr>
                                 <div className='ListAvencemant'>
                                     <div className='avn_Up'>
                                     {sprints.map((sprint, index) => <SprintLine key={index} data={sprint} taille={sprint.numberOfTasks * 10} duree={moveSprint(pro.startDateProject,pro.endDateProject,sprint.startDateSprint)} setPassage={setPassage} setTasks={setTasks}/>)}

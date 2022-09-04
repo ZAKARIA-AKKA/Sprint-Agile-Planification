@@ -1,11 +1,11 @@
 import '../../../Style/Home/Project.css';
-// import { useState } from "react";
+// import { useEffect } from "react";
 const Project = (props) => 
 {
     
 
     const handelClick_1 = () =>{ //button consulter
-
+        props.setShowSearch(false)
         props.setPro(props.data)
         fetch('http://localhost:8080/project/sprints/' + props.data.idProject)
             .then(res => res.json())
@@ -21,7 +21,6 @@ const Project = (props) =>
         props.setInfo(true)
         props.setProjectDetails(props.data)
     }
-
 
     return (
 

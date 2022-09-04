@@ -110,7 +110,7 @@
     position: relative;
     display:flex;
     justify-content: center;
-    align-items:flex-end;
+    align-items:flex-start;
 }
 .work_section footer
 {
@@ -166,10 +166,11 @@
 .change_section .contact
 {
     background:white;
-    width:80%;
+    opacity:.7;
+    width:40%;
     height:100px;
     position: absolute;
-    margin-bottom:10px;
+    margin-top:20px;
     border-radius:10px;
     z-index:12;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;

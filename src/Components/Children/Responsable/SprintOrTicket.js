@@ -16,15 +16,18 @@ const SprintOrTicket = (props) =>
     }
 
     useEffect(() => {
-
-        fetch('http://localhost:8080/resource/list/all')
+        
+        if(props.choix === 'ticket')
+        {
+            fetch('http://localhost:8080/resource/list/all')
                 .then(res => res.json())
                 .then(res => {
                     let u = res.filter((user) => user.id === props.data.employeeId)
                     setCreator(u[0].firstName  + ' ' + u[0].lastName)
                 })
-
+        }
     },[])
+
 
     return (
         <>
