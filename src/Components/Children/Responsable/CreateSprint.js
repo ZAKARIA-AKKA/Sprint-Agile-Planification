@@ -12,7 +12,7 @@ const CreateSprint = (props) => {
     const [operation, setOperation] = useState("..."); // pour déterminer le genre de l'operation effectué sur le ticket (ajout ou modification ) 
     const [projectsList, setProjectList] = useState([]);
     //========================================================
-    const [ref,setRef] = useState('');// Pour générer un id ou une référence aléatoirement
+    const [ref, setRef] = useState('');// Pour générer un id ou une référence aléatoirement
     const [sprintId, setSprintId] = useState('');
     const [titleSprint, setTitle] = useState('');
     const [descriptionSprint, setDescSprint] = useState('');
@@ -34,7 +34,7 @@ const CreateSprint = (props) => {
     const [TaskList, setTaskList] = useState([]);
 
     const [dataTaskUpdate, setDataTaskUpdate] = useState('');
-    const [work,setWork] = useState(false);
+    const [work, setWork] = useState(false);
     //========================================================
 
     useEffect(() => {
@@ -70,7 +70,7 @@ const CreateSprint = (props) => {
             fetch('http://localhost:8080/project/list/all')
                 .then(res => res.json())
                 .then(res => setProjectList(res))
-                
+
         }
     }
     const handelClick_2 = (e) => {
@@ -79,7 +79,7 @@ const CreateSprint = (props) => {
         if (startDateSprint !== '' && endDateSprint !== '' && numberTicket !== '' && projectTitle !== '') {
             setPassage("3")
             let projectId = projectsList.filter((p) => p.titleProject === projectTitle)[0].idProject
-            const sprint = {titleSprint, descriptionSprint, startDateSprint, endDateSprint, statusSprint,projectId}
+            const sprint = { titleSprint, descriptionSprint, startDateSprint, endDateSprint, statusSprint, projectId }
             fetch('http://localhost:8080/sprint/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sprint) })
 
             fetch('http://localhost:8080/resource/list/all')
@@ -91,8 +91,8 @@ const CreateSprint = (props) => {
 
         e.preventDefault();
         fetch('http://localhost:8080/sprint/tasks/' + sprintId)
-                .then(res => res.json())
-                .then(res => setTaskList(res))
+            .then(res => res.json())
+            .then(res => setTaskList(res))
         setPassage("4")
 
     }
@@ -100,6 +100,9 @@ const CreateSprint = (props) => {
 
         setPassage("1")
         setWork(false);
+        setSprintId('')
+        setTitle('');
+        setDescSprint('');
     }
     const change = (e) => {
 
@@ -111,14 +114,14 @@ const CreateSprint = (props) => {
                     fetch('http://localhost:8080/sprint/get/last')
                         .then(res => res.json())
                         .then(res => {
-                            console.log(res.idSprint)
+                            console.log('Sprint id ===> ',res.idSprint)
                             setSprintId(res.idSprint)
                             let sprintId = res.idSprint
-                            let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id  
-                            const task = { titleTask, descriptionTask, startDateTask, endDateTask, statusTask,sprintId,employeeId }
-                            fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task)})
+                            let employeeId = ressourceList.filter((r) => (r.firstName + ' ' + r.lastName) === ressource)[0].id
+                            const task = { titleTask, descriptionTask, startDateTask, endDateTask, statusTask, sprintId, employeeId }
+                            fetch('http://localhost:8080/task/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(task) })
 
-                    }) 
+                        })
 
                     setTimeout(() => {
                         e.target.checked = false;
@@ -153,7 +156,7 @@ const CreateSprint = (props) => {
                     {passage === '1' ?
                         <form className='formSprint1'>
                             <div>
-                                <input type="text"  value={ref} onChange={(e) => setRef(e.target.value)} disabled/>
+                                <input type="text" value={ref} onChange={(e) => setRef(e.target.value)} disabled />
                                 <input type="text" placeholder='Nom de Sprint' value={titleSprint} onChange={(e) => setTitle(e.target.value)} />
                                 <input type="text" placeholder='Description de Sprint' value={descriptionSprint} onChange={(e) => setDescSprint(e.target.value)} />
                             </div>
@@ -164,9 +167,9 @@ const CreateSprint = (props) => {
                                 <div className='firstBox'>
                                     <div>
                                         <label>Date de Départ</label>
-                                        <input type="date" value={startDateSprint} onChange={(e) => {setDateDepart(e.target.value);setDateDepartT(e.target.value)}} />
+                                        <input type="date" value={startDateSprint} onChange={(e) => { setDateDepart(e.target.value); setDateDepartT(e.target.value) }} />
                                         <label>Date de Cloture</label>
-                                        <input type="date" value={endDateSprint} onChange={(e) => {setDateFin(e.target.value);setDateFinT(e.target.value)}} />
+                                        <input type="date" value={endDateSprint} onChange={(e) => { setDateFin(e.target.value); setDateFinT(e.target.value) }} />
                                         <input list="project" id="mesProject" name="mesProject" placeholder='List Project' value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)} />
                                         <datalist id="project" >
                                             {projectsList.map((p) => <option key={p.idProject} value={p.titleProject}></option>)}
@@ -205,7 +208,7 @@ const CreateSprint = (props) => {
                                 : passage === '4' ?
                                     <form className='formSprint4'>
                                         <div className='tickets'>
-                                            {TaskList.map((task, index) => <Ticket key={index} task={task} setPassage={setPassage} setOperation={setOperation} setDataTaskUpdate={setDataTaskUpdate} setTaskList={setTaskList}/>)}
+                                            {TaskList.map((task, index) => <Ticket key={index} task={task} setPassage={setPassage} setOperation={setOperation} setDataTaskUpdate={setDataTaskUpdate} setTaskList={setTaskList} />)}
                                         </div>
                                         <div className='secondBox'>
                                             <button onClick={handelClick_4}>démarrer le sprint</button>
@@ -216,7 +219,7 @@ const CreateSprint = (props) => {
 
                                     </form>
                                     : passage === '5' ?
-                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setTaskList={setTaskList} sprintId={sprintId}/>
+                                        <UpdateTicket setPassage={setPassage} operation={operation} dataTaskUpdate={dataTaskUpdate} setTaskList={setTaskList} sprintId={sprintId} />
                                         : null
                     }
                     <footer>

@@ -26,7 +26,7 @@ const ListProject = (props) => {
 
     const deleteProject = () => {
 
-        if (window.confirm("Etes-vous sur ? ^ ^")) {
+        if (window.confirm("Etes-vous sur ?", "Suppression")) {
 
             fetch('http://localhost:8080/project/delete/' + projectDetails.idProject)
                 .then(() => {

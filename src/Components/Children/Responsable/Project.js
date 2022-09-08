@@ -21,7 +21,6 @@ const Project = (props) =>
         props.setInfo(true)
         props.setProjectDetails(props.data)
     }
-
     return (
 
         <div className="project">
